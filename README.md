@@ -30,6 +30,11 @@ agent-skills/
 │   ├── README.md
 │   ├── references/           ← detail loaded on demand
 │   └── assets/               ← example structure
+├── mol-gnn/                   ← train GNNs for molecular property prediction (PyG)
+│   ├── SKILL.md
+│   ├── README.md
+│   ├── scripts/              ← runnable uv training script
+│   └── assets/               ← example dataset
 └── ...
 ```
 
