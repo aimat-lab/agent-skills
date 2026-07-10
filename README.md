@@ -13,6 +13,16 @@ You pick the skills you want and install them into your local agent's skills
 folder. Skills are independent: installing one does not require installing any
 other.
 
+## Existing skills
+
+The skills currently in this repo:
+
+| Skill | Summary |
+|-------|---------|
+| [xtb](xtb/) | Run the Grimme group's `xtb` semiempirical tight-binding program from the command line: geometry optimization, single-point energies, vibrational frequencies and thermochemistry, and implicit solvation (ALPB/GBSA) across the GFN0/1/2-xTB and GFN-FF methods — plus the newer general-purpose g-xTB method and CREST conformer/rotamer searches. The fast, cheap route to QM on a molecule, e.g. for pre-screening geometries before DFT. |
+| [mol-gnn](mol-gnn/) | Train a graph neural network to predict molecular properties from a CSV of SMILES + targets, using `chem_mat_data` to featurize the molecules and PyTorch Geometric + Lightning for the model. Covers regression and classification, single- and multi-target, the model menu (GCN/GAT/GIN benchmarks vs. the recommended GIN/GINE/GATv2), train/val/test splitting, metrics, and gotchas — and ships a self-contained `uv` training script plus an example dataset that run end-to-end. |
+| [megan-xai](megan-xai/) | Train a MEGAN self-explaining GNN on a SMILES + target CSV: it predicts a property *and* produces per-node/edge attribution masks across multiple explanation channels. Drives the full loop — write a pycomex sub-experiment, smoke-test, run, read the automatic post-training diagnostic self-check, tune the explanation knobs when a run fails, and assemble a human-facing explanation report. Operates inside a `graph_attention_student` checkout. |
+
 ## Repository layout
 
 Skills live as a **flat list of folders** at the repo root. Each folder is one
@@ -35,6 +45,11 @@ agent-skills/
 │   ├── README.md
 │   ├── scripts/              ← runnable uv training script
 │   └── assets/               ← example dataset
+├── megan-xai/                 ← train self-explaining MEGAN GNNs + judge explanations
+│   ├── SKILL.md
+│   ├── README.md
+│   ├── templates/           ← pycomex sub-experiment template
+│   └── references/          ← diagnostic + knob docs loaded on demand
 └── ...
 ```
 
