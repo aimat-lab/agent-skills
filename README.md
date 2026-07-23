@@ -20,6 +20,7 @@ The skills currently in this repo:
 | Skill | Summary |
 |-------|---------|
 | [xtb](xtb/) | Run the Grimme group's `xtb` semiempirical tight-binding program from the command line: geometry optimization, single-point energies, vibrational frequencies and thermochemistry, and implicit solvation (ALPB/GBSA) across the GFN0/1/2-xTB and GFN-FF methods — plus the newer general-purpose g-xTB method and CREST conformer/rotamer searches. The fast, cheap route to QM on a molecule, e.g. for pre-screening geometries before DFT. |
+| [chem-mat-database](chem-mat-database/) | Discover, download, and load chemistry & materials-science datasets from the **ChemMatData** database using the `chem_mat_data` package — both its `cmdata` CLI (`list`/`info`/`stats`/`download`) and its Python loaders. Pull any benchmark (clintox, esol, qm9, tox21, bace, lipophilicity, tmqm, …) as a pandas DataFrame (SMILES + targets), GNN-ready graph dicts, 3D structures, or transition-metal-complex tables, with PyG/Jraph conversion, streaming datasets for big data, and cache management. Pure data access — hands off to `mol-gnn` for training. Ships a self-contained `uv` script that tours the whole consumer API end-to-end. |
 | [mol-gnn](mol-gnn/) | Train a graph neural network to predict molecular properties from a CSV of SMILES + targets, using `chem_mat_data` to featurize the molecules and PyTorch Geometric + Lightning for the model. Covers regression and classification, single- and multi-target, the model menu (GCN/GAT/GIN benchmarks vs. the recommended GIN/GINE/GATv2), train/val/test splitting, metrics, and gotchas — and ships a self-contained `uv` training script plus an example dataset that run end-to-end. |
 | [megan-xai](megan-xai/) | Train a MEGAN self-explaining GNN on a SMILES + target CSV: it predicts a property *and* produces per-node/edge attribution masks across multiple explanation channels. Drives the full loop — write a pycomex sub-experiment, smoke-test, run, read the automatic post-training diagnostic self-check, tune the explanation knobs when a run fails, and assemble a human-facing explanation report. Operates inside a `graph_attention_student` checkout. |
 | [md-multiatoms](md-multiatoms/) | Run molecular dynamics with ASE, scaled by the `multiatoms` package for batched, parallel dynamics on a GPU: replicate a structure into many systems and batch their force evaluations into one forward pass. Covers writing a `ModelManager` for any interatomic potential (a batched torch model, or an off-the-shelf ASE calculator like MACE/XTB/EMT), the MultiAtoms/PolyAtoms API, the setup-outside / step-inside `parallel()` rule, the minimize → equilibrate → produce workflow, and writing + analyzing trajectories (temperature, energy, RDF) — and ships a self-contained `uv` script that runs an EMT smoke test end-to-end. |
@@ -41,6 +42,11 @@ agent-skills/
 │   ├── README.md
 │   ├── references/           ← detail loaded on demand
 │   └── assets/               ← example structure
+├── chem-mat-database/         ← discover/download/load ChemMatData datasets
+│   ├── SKILL.md
+│   ├── README.md
+│   ├── scripts/              ← runnable uv tour of the loader API
+│   └── references/           ← catalog + graph-format docs
 ├── mol-gnn/                   ← train GNNs for molecular property prediction (PyG)
 │   ├── SKILL.md
 │   ├── README.md
