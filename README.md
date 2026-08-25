@@ -25,6 +25,7 @@ The skills currently in this repo:
 | [megan-xai](megan-xai/) | Train a MEGAN self-explaining GNN on a SMILES + target CSV: it predicts a property *and* produces per-node/edge attribution masks across multiple explanation channels. Drives the full loop — write a pycomex sub-experiment, smoke-test, run, read the automatic post-training diagnostic self-check, tune the explanation knobs when a run fails, and assemble a human-facing explanation report. Operates inside a `graph_attention_student` checkout. |
 | [md-multiatoms](md-multiatoms/) | Run molecular dynamics with ASE, scaled by the `multiatoms` package for batched, parallel dynamics on a GPU: replicate a structure into many systems and batch their force evaluations into one forward pass. Covers writing a `ModelManager` for any interatomic potential (a batched torch model, or an off-the-shelf ASE calculator like MACE/XTB/EMT), the MultiAtoms/PolyAtoms API, the setup-outside / step-inside `parallel()` rule, the minimize → equilibrate → produce workflow, and writing + analyzing trajectories (temperature, energy, RDF) — and ships a self-contained `uv` script that runs an EMT smoke test end-to-end. |
 | [autoslurm](autoslurm/) | Submit and monitor Slurm jobs with AutoSlurm (the `aslurm` CLI), which packs many commands into few jobs from a YAML template config. Covers config discovery, the sweep syntax (`<[zipped]>` vs. `<{product}>`), packing tasks onto GPUs, chain jobs for work longer than the walltime, and dry-running before submit — written mainly to pre-empt AutoSlurm's silent failure modes: output that looks like it went to `/dev/null` but didn't, a sweep that ran once because the angle brackets were unquoted or missing, and a config that is ignored because a same-named one shadows it. |
+| [pytorch-to-static-site](pytorch-to-static-site/) | Assess feasibility and port PyTorch inference pipelines to a fully static browser site using ONNX export, client-side assets, ONNX Runtime Web, GitHub Pages, and GitHub Actions deployment. |
 
 ## Repository layout
 
@@ -58,6 +59,9 @@ agent-skills/
 │   ├── README.md
 │   ├── templates/           ← pycomex sub-experiment template
 │   └── references/          ← diagnostic + knob docs loaded on demand
+├── pytorch-to-static-site/    ← port PyTorch inference to static browser site (ONNX / WASM)
+│   ├── SKILL.md
+│   └── README.md
 └── ...
 ```
 
