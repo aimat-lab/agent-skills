@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="640" viewBox="0 0 600 640" role="img" aria-labelledby="title desc">
+  <title id="title">Conceptual analysis workflow</title>
+  <desc id="desc">Input leads to analysis, which produces a result. Replace these labels with the actual method.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#444"/></marker>
+  </defs>
+  <g fill="white" stroke="#444" stroke-width="2">
+    <rect x="100" y="65" width="400" height="115"/>
+    <rect x="100" y="260" width="400" height="115"/>
+    <rect x="100" y="455" width="400" height="115"/>
+  </g>
+  <g stroke="#444" stroke-width="2" marker-end="url(#arrow)">
+    <line x1="300" y1="192" x2="300" y2="245"/>
+    <line x1="300" y1="387" x2="300" y2="440"/>
+  </g>
+  <g fill="#222" font-family="sans-serif" font-size="34" text-anchor="middle">
+    <text x="300" y="134">Input</text>
+    <text x="300" y="329">Analysis</text>
+    <text x="300" y="524">Result</text>
+  </g>
+</svg>
